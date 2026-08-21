@@ -1,0 +1,3105 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Education Site - Education Guru Site">
+<meta http-equiv="Content-Security-Policy"
+content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'self';">
+<title>Education Site | Education Guru Site</title>
+
+<style>
+:root{
+ --bg:#f4f7fb;
+ --card:#fff;
+ --text:#182033;
+ --muted:#65718a;
+ --primary:#315efb;
+ --secondary:#7045ff;
+ --green:#087b4b;
+ --red:#c62828;
+ --border:#dfe5ef;
+ --shadow:0 10px 30px rgba(30,45,90,.10);
+}
+*{box-sizing:border-box}
+body{
+ margin:0;
+ background:var(--bg);
+ color:var(--text);
+ font-family:Arial,"Noto Sans Devanagari",sans-serif;
+ line-height:1.6;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+header{
+ position:sticky;
+ top:0;
+ z-index:100;
+ background:#fff;
+ border-bottom:1px solid var(--border);
+}
+.nav{
+ max-width:1250px;
+ margin:auto;
+ padding:10px 15px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+}
+.brand{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ font-weight:900;
+ color:var(--primary);
+}
+.logo{
+ width:45px;
+ height:45px;
+ border-radius:13px;
+ background:linear-gradient(135deg,#315efb,#7045ff);
+ color:#fff;
+ display:grid;
+ place-items:center;
+ font-size:23px;
+}
+.navlinks{
+ display:flex;
+ gap:6px;
+ flex-wrap:wrap;
+ justify-content:flex-end;
+}
+.navlinks button{
+ border:0;
+ background:#eef2ff;
+ color:#2946aa;
+ padding:9px 11px;
+ border-radius:10px;
+ font-weight:bold;
+}
+main{
+ max-width:1250px;
+ margin:auto;
+ padding:20px 15px 70px;
+}
+.page{min-height:70vh}
+.hero{
+ padding:40px 25px;
+ border-radius:25px;
+ background:linear-gradient(135deg,#17275e,#6c38b8);
+ color:white;
+ box-shadow:var(--shadow);
+}
+.hero h1{
+ font-size:clamp(35px,6vw,60px);
+ margin:0 0 10px;
+}
+.hero p{max-width:900px;color:#eef1ff}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+ gap:15px;
+ margin-top:18px;
+}
+.card,.lesson,.quizbox{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:18px;
+ padding:18px;
+ box-shadow:var(--shadow);
+}
+.quizbox{box-shadow:none;margin:12px 0}
+.btn{
+ border:0;
+ padding:11px 15px;
+ border-radius:11px;
+ background:var(--primary);
+ color:#fff;
+ font-weight:bold;
+}
+.btn.secondary{
+ background:#eef2ff;
+ color:#2946aa;
+}
+.btn.green{
+ background:#e8f8f0;
+ color:var(--green);
+}
+.btn.red{
+ background:#fff0ef;
+ color:var(--red);
+}
+.row{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+ align-items:center;
+}
+.row>*{flex:1}
+input,select,textarea{
+ width:100%;
+ padding:12px;
+ border:1px solid var(--border);
+ border-radius:11px;
+ background:#fff;
+ outline:none;
+}
+label{
+ display:block;
+ font-weight:bold;
+ margin:10px 0 6px;
+}
+.hidden{display:none!important}
+.badge{
+ display:inline-block;
+ background:#edf2ff;
+ color:#3451c0;
+ padding:5px 9px;
+ border-radius:99px;
+ font-size:12px;
+ font-weight:bold;
+}
+.topic{
+ border:1px solid var(--border);
+ background:white;
+ border-radius:15px;
+ padding:14px;
+ margin:9px 0;
+}
+.small{
+ font-size:13px;
+ color:var(--muted);
+}
+.progress{
+ height:10px;
+ border-radius:99px;
+ background:#e5e9f1;
+ overflow:hidden;
+}
+.progress i{
+ display:block;
+ height:100%;
+ background:linear-gradient(90deg,var(--primary),var(--secondary));
+}
+.feedback{
+ margin-top:10px;
+ padding:12px;
+ border-radius:12px;
+}
+.correct{
+ background:#e9f8f0;
+ color:#087044;
+}
+.wrong{
+ background:#fff0ef;
+ color:#ad2923;
+}
+.two{
+ display:grid;
+ grid-template-columns:1.2fr .8fr;
+ gap:18px;
+}
+.tablewrap{overflow:auto}
+table{
+ width:100%;
+ border-collapse:collapse;
+ background:white;
+}
+th,td{
+ border:1px solid var(--border);
+ padding:9px;
+ text-align:left;
+}
+th{background:#f0f3f9}
+.modal{
+ position:fixed;
+ inset:0;
+ z-index:500;
+ background:#071027aa;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:15px;
+}
+.modalbox{
+ width:min(600px,100%);
+ max-height:90vh;
+ overflow:auto;
+ background:white;
+ border-radius:22px;
+ padding:23px;
+}
+footer{
+ text-align:center;
+ color:var(--muted);
+ padding:30px;
+}
+@media(max-width:800px){
+ .two{grid-template-columns:1fr}
+ .nav{align-items:flex-start}
+ .navlinks{max-width:65vw}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="nav">
+
+<div class="brand">
+<div class="logo">🎓</div>
+<div>
+Education Site
+<br>
+<small>Education Guru Site</small>
+</div>
+</div>
+
+<div class="navlinks">
+<button onclick="go('home')">Home</button>
+<button onclick="go('syllabus')">Syllabus</button>
+<button onclick="go('planner')">Study Plan</button>
+<button onclick="go('notes')">Notes</button>
+<button onclick="go('ai')">AI Tutor</button>
+<button onclick="openOwner()">Owner</button>
+</div>
+
+</div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section id="home" class="page">
+
+<div class="hero">
+
+<h1>Education Site</h1>
+
+<p>
+Welcome to <b>Education Guru Site</b>.
+यहाँ Class 8, 9 और 10 Science के chapters,
+topics, learning, practice questions और study planning
+एक ही जगह उपलब्ध हैं।
+</p>
+
+<div class="row">
+
+<button class="btn" onclick="openProfile()">
+🚀 Start Learning
+</button>
+
+<button class="btn secondary" onclick="go('syllabus')">
+📚 Explore Syllabus
+</button>
+
+</div>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>📖 Digital Science Book</h3>
+<p>
+Chapter → Topic → Explanation → Practice
+के format में learning.
+</p>
+</div>
+
+<div class="card">
+<h3>📝 Question Practice</h3>
+<p>
+MCQ, Match the Following, Fill in the Blanks
+और Written Answer questions.
+</p>
+</div>
+
+<div class="card">
+<h3>✅ Answer Checking</h3>
+<p>
+Answer लिखो और system basic concept के आधार पर
+feedback देगा।
+</p>
+</div>
+
+<div class="card">
+<h3>🎯 Daily Study Goal</h3>
+<p>
+कितने महीने में syllabus खत्म करना है,
+उसके हिसाब से daily target बनाओ।
+</p>
+</div>
+
+<div class="card">
+<h3>🤖 AI Tutor</h3>
+<p>
+Question और अपना answer डालकर
+learning feedback प्राप्त करें।
+</p>
+</div>
+
+<div class="card">
+<h3>💳 Paid Notes</h3>
+<p>
+Notes की वर्तमान कीमत:
+<b id="homePrice">₹100</b>
+</p>
+
+<p>
+Payment / Contact:
+<b>9142175541</b>
+</p>
+
+<button class="btn" onclick="go('notes')">
+Notes Request
+</button>
+
+</div>
+
+</div>
+
+<div class="card" style="margin-top:20px">
+
+<h3>🔐 Security</h3>
+
+<p>
+यह single HTML version frontend demo है।
+Real production website के लिए owner authentication,
+payment verification और AI API को server-side रखना चाहिए।
+Website को HTTPS पर host करें।
+</p>
+
+</div>
+
+</section>
+
+
+<!-- SYLLABUS -->
+<section id="syllabus" class="page hidden">
+
+<h2>📚 Science Syllabus</h2>
+
+<div class="row">
+
+<select id="classSelect" onchange="renderSyllabus()">
+<option value="8">Class 8</option>
+<option value="9">Class 9</option>
+<option value="10">Class 10</option>
+</select>
+
+<input
+id="searchBox"
+placeholder="Chapter या Topic search करें..."
+oninput="renderSyllabus()">
+
+</div>
+
+<div id="syllabusList"></div>
+
+</section>
+
+
+<!-- CHAPTER -->
+<section id="chapter" class="page hidden">
+
+<div id="chapterContent"></div>
+
+</section>
+
+
+<!-- LESSON -->
+<section id="lesson" class="page hidden">
+
+<div id="lessonContent"></div>
+
+</section>
+
+
+<!-- PLANNER -->
+<section id="planner" class="page hidden">
+
+<h2>🎯 Personal Study Planner</h2>
+
+<div class="two">
+
+<div class="card">
+
+<label>Class</label>
+
+<select id="planClass">
+<option value="8">Class 8</option>
+<option value="9">Class 9</option>
+<option value="10">Class 10</option>
+</select>
+
+<label>कितने महीने में पूरा करना है?</label>
+
+<input
+id="months"
+type="number"
+min="1"
+value="6">
+
+<label>रोज कितने घंटे पढ़ सकते हैं?</label>
+
+<input
+id="studyHours"
+type="number"
+min=".5"
+step=".5"
+value="2">
+
+<button
+class="btn"
+style="margin-top:12px"
+onclick="makePlan()">
+Daily Goal बनाओ
+</button>
+
+</div>
+
+<div class="card" id="planOutput">
+
+<p class="small">
+आपका study plan यहाँ दिखाई देगा।
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- NOTES -->
+<section id="notes" class="page hidden">
+
+<h2>💳 Notes Request System</h2>
+
+<div class="two">
+
+<div class="card">
+
+<h3>Step 1 — Payment</h3>
+
+<p>
+Current Notes Price:
+<b id="notesPrice">₹100</b>
+</p>
+
+<p>
+Payment / Contact Number:
+<b>9142175541</b>
+</p>
+
+<p class="small">
+Payment करने के बाद transaction/reference number
+यहाँ डालें।
+</p>
+
+<label>Class</label>
+
+<select id="notesClass" onchange="loadNoteChapters()">
+<option value="8">Class 8</option>
+<option value="9">Class 9</option>
+<option value="10">Class 10</option>
+</select>
+
+<label>Chapter</label>
+
+<select
+id="notesChapter"
+onchange="loadNoteTopics()">
+</select>
+
+<label>Topic</label>
+
+<select id="notesTopic">
+</select>
+
+<label>Student Name</label>
+
+<input
+id="notesStudent"
+placeholder="अपना नाम">
+
+<label>Payment Reference / UTR</label>
+
+<input
+id="paymentRef"
+placeholder="Payment reference / UTR">
+
+<button
+class="btn"
+style="margin-top:12px"
+onclick="submitNotes()">
+Submit Notes Request
+</button>
+
+<div id="notesMessage"></div>
+
+</div>
+
+
+<div class="card">
+
+<h3>🖼️ Topic Notes Image</h3>
+
+<p>
+Selected topic के लिए notes-card image generate करें।
+</p>
+
+<button
+class="btn secondary"
+onclick="createNotesImage()">
+Generate Image
+</button>
+
+<br><br>
+
+<canvas
+id="notesCanvas"
+width="1200"
+height="1600"
+class="hidden">
+</canvas>
+
+<button
+id="downloadImage"
+class="btn hidden"
+onclick="downloadNotesImage()">
+Download Notes Image
+</button>
+
+<p class="small">
+Automatic WhatsApp/file sending के लिए backend
+और WhatsApp Business API की आवश्यकता होगी।
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- AI -->
+<section id="ai" class="page hidden">
+
+<h2>🤖 AI Tutor / Answer Checker</h2>
+
+<div class="card">
+
+<label>Class</label>
+
+<select id="aiClass">
+<option>8</option>
+<option>9</option>
+<option>10</option>
+</select>
+
+<label>Topic</label>
+
+<input
+id="aiTopic"
+placeholder="जैसे Cell, Force, Atom">
+
+<label>Question</label>
+
+<textarea
+id="aiQuestion"
+rows="4"
+placeholder="Question लिखें">
+</textarea>
+
+<label>आपका Answer</label>
+
+<textarea
+id="aiAnswer"
+rows="6"
+placeholder="अपना answer लिखें">
+</textarea>
+
+<button
+class="btn"
+onclick="checkAIAnswer()">
+Check Answer
+</button>
+
+<div id="aiResult"></div>
+
+</div>
+
+</section>
+
+
+<!-- OWNER -->
+<section id="owner" class="page hidden">
+
+<div id="ownerContent"></div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+Education Site © 2026
+<br>
+Education Guru Site
+
+</footer>
+
+
+<!-- PROFILE MODAL -->
+
+<div id="profileModal" class="modal hidden">
+
+<div class="modalbox">
+
+<h2>👋 Student Profile</h2>
+
+<label>Name</label>
+
+<input id="studentName" placeholder="Student Name">
+
+<label>Class</label>
+
+<select id="studentClass">
+<option value="8">Class 8</option>
+<option value="9">Class 9</option>
+<option value="10">Class 10</option>
+</select>
+
+<label>School</label>
+
+<input id="schoolName">
+
+<label>Learning Goal</label>
+
+<input id="learningGoal">
+
+<label>Target Months</label>
+
+<input
+id="profileMonths"
+type="number"
+value="6"
+min="1">
+
+<br><br>
+
+<button class="btn" onclick="saveProfile()">
+Start Learning
+</button>
+
+<button
+class="btn secondary"
+onclick="closeProfile()">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+
+<!-- OWNER LOGIN -->
+
+<div id="ownerModal" class="modal hidden">
+
+<div class="modalbox">
+
+<h2>🔐 Owner Panel</h2>
+
+<label>Owner Password</label>
+
+<input
+id="ownerPassword"
+type="password"
+placeholder="Enter password">
+
+<br><br>
+
+<button class="btn" onclick="ownerLogin()">
+Login
+</button>
+
+<button
+class="btn secondary"
+onclick="closeOwner()">
+Cancel
+</button>
+
+<p class="small">
+Demo password browser-side है।
+Production website में इसे server-side authentication
+से replace करें।
+</p>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   SYLLABUS DATABASE
+   ========================================================= */
+
+const SYLLABUS={
+
+8:{
+"Crop Production and Management":[
+"Types of Crops",
+"Agricultural Practices",
+"Preparation of Soil",
+"Sowing",
+"Adding Manure and Fertilizers",
+"Irrigation",
+"Protection from Weeds",
+"Harvesting",
+"Storage",
+"Food from Animals"
+],
+
+"Microorganisms: Friend and Foe":[
+"Microorganisms",
+"Where Microorganisms Live",
+"Useful Microorganisms",
+"Commercial Uses",
+"Medicinal Uses",
+"Vaccine",
+"Food Preservation",
+"Nitrogen Fixation",
+"Harmful Microorganisms",
+"Food Poisoning",
+"Food Preservation Methods"
+],
+
+"Coal and Petroleum":[
+"Natural Resources",
+"Coal",
+"Formation of Coal",
+"Products of Coal",
+"Petroleum",
+"Formation of Petroleum",
+"Refining Petroleum",
+"Petroleum Products",
+"Natural Gas",
+"Conservation of Fossil Fuels"
+],
+
+"Combustion and Flame":[
+"Combustion",
+"Types of Combustion",
+"Conditions Necessary for Combustion",
+"Flame",
+"Structure of Flame",
+"Fuel",
+"Characteristics of Good Fuel",
+"Calorific Value",
+"Fuel Efficiency",
+"Pollution Caused by Burning Fuels"
+],
+
+"Conservation of Plants and Animals":[
+"Deforestation",
+"Causes of Deforestation",
+"Consequences of Deforestation",
+"Conservation",
+"Protected Areas",
+"Wildlife Sanctuary",
+"National Park",
+"Biosphere Reserve",
+"Endemic Species",
+"Red Data Book",
+"Migration",
+"Recycling of Paper"
+],
+
+"Reproduction in Animals":[
+"Modes of Reproduction",
+"Sexual Reproduction",
+"Male Reproductive Organs",
+"Female Reproductive Organs",
+"Fertilisation",
+"Internal Fertilisation",
+"External Fertilisation",
+"Development of Embryo",
+"Viviparous and Oviparous Animals",
+"Metamorphosis",
+"Asexual Reproduction"
+],
+
+"Reaching the Age of Adolescence":[
+"Adolescence",
+"Puberty",
+"Changes at Puberty",
+"Secondary Sexual Characters",
+"Role of Hormones",
+"Reproductive Phase",
+"Menstrual Cycle",
+"Sex Determination",
+"Endocrine Glands",
+"Balanced Diet",
+"Personal Hygiene"
+],
+
+"Force and Pressure":[
+"Force",
+"Effects of Force",
+"Types of Forces",
+"Contact Forces",
+"Non-contact Forces",
+"Pressure",
+"Pressure in Fluids",
+"Atmospheric Pressure"
+],
+
+"Friction":[
+"Force of Friction",
+"Factors Affecting Friction",
+"Types of Friction",
+"Static Friction",
+"Sliding Friction",
+"Rolling Friction",
+"Fluid Friction",
+"Advantages of Friction",
+"Disadvantages of Friction",
+"Methods of Increasing Friction",
+"Methods of Reducing Friction"
+],
+
+"Sound":[
+"Production of Sound",
+"Vibration",
+"Propagation of Sound",
+"Human Voice",
+"Human Ear",
+"Loudness",
+"Pitch",
+"Time Period",
+"Frequency",
+"Noise Pollution",
+"Measures to Control Noise Pollution"
+],
+
+"Chemical Effects of Electric Current":[
+"Conductors and Insulators",
+"Electric Current in Liquids",
+"Chemical Effects",
+"Electroplating",
+"Uses of Electroplating",
+"LEDs",
+"Testing Conductivity"
+],
+
+"Some Natural Phenomena":[
+"Lightning",
+"Electric Charges",
+"Charging by Rubbing",
+"Types of Charges",
+"Discharge",
+"Lightning Safety",
+"Earthquake",
+"Causes of Earthquakes",
+"Seismic Zones",
+"Safety During Earthquake"
+],
+
+"Light":[
+"Laws of Reflection",
+"Regular Reflection",
+"Diffused Reflection",
+"Reflection from Plane Mirror",
+"Multiple Reflection",
+"Periscope",
+"Kaleidoscope",
+"Human Eye",
+"Care of Eyes",
+"Braille System"
+],
+
+"Stars and the Solar System":[
+"The Moon",
+"Phases of Moon",
+"Stars",
+"Constellations",
+"Pole Star",
+"Solar System",
+"Planets",
+"Satellites",
+"Artificial Satellites",
+"Asteroids",
+"Comets",
+"Meteoroids"
+],
+
+"Pollution of Air and Water":[
+"Air Pollution",
+"Causes of Air Pollution",
+"Effects of Air Pollution",
+"Greenhouse Effect",
+"Global Warming",
+"Water Pollution",
+"Causes of Water Pollution",
+"Potable Water",
+"Purification of Water",
+"Water Conservation"
+]
+
+},
+
+9:{
+"1. Matter in Our Surroundings":[
+"Physical Nature of Matter",
+"Characteristics of Particles of Matter",
+"States of Matter",
+"Effect of Change of Temperature",
+"Effect of Change of Pressure",
+"Evaporation",
+"Factors Affecting Evaporation",
+"Cooling Effect of Evaporation"
+],
+
+"2. Is Matter Around Us Pure?":[
+"Mixtures",
+"Types of Mixtures",
+"Solutions",
+"Concentration of Solution",
+"Suspension",
+"Colloids",
+"Separation Techniques",
+"Physical and Chemical Changes",
+"Pure Substances",
+"Elements",
+"Compounds"
+],
+
+"3. Atoms and Molecules":[
+"Laws of Chemical Combination",
+"Law of Conservation of Mass",
+"Law of Constant Proportions",
+"Dalton's Atomic Theory",
+"Atoms",
+"Symbols of Elements",
+"Atomic Mass",
+"Molecules",
+"Valency",
+"Chemical Formulae",
+"Molecular Mass"
+],
+
+"4. Structure of the Atom":[
+"Charged Particles",
+"Discovery of Electron",
+"Discovery of Proton",
+"Discovery of Neutron",
+"Models of Atom",
+"Thomson Model",
+"Rutherford Model",
+"Bohr Model",
+"Neutrons",
+"Valency",
+"Atomic Number",
+"Mass Number",
+"Isotopes",
+"Isobars"
+],
+
+"5. The Fundamental Unit of Life":[
+"Cell",
+"Cell Theory",
+"Plasma Membrane",
+"Cell Wall",
+"Nucleus",
+"Cytoplasm",
+"Cell Organelles",
+"Mitochondria",
+"Endoplasmic Reticulum",
+"Golgi Apparatus",
+"Lysosomes",
+"Plastids",
+"Vacuoles",
+"Plant Cell",
+"Animal Cell"
+],
+
+"6. Tissues":[
+"Plant Tissues",
+"Meristematic Tissue",
+"Permanent Tissue",
+"Simple Permanent Tissue",
+"Complex Permanent Tissue",
+"Animal Tissues",
+"Epithelial Tissue",
+"Connective Tissue",
+"Muscular Tissue",
+"Nervous Tissue"
+],
+
+"7. Motion":[
+"Motion",
+"Distance",
+"Displacement",
+"Speed",
+"Velocity",
+"Acceleration",
+"Uniform Motion",
+"Non-uniform Motion",
+"Distance-Time Graph",
+"Velocity-Time Graph",
+"Equations of Motion",
+"Uniform Circular Motion"
+],
+
+"8. Force and Laws of Motion":[
+"Force",
+"Balanced Forces",
+"Unbalanced Forces",
+"Newton's First Law",
+"Inertia",
+"Newton's Second Law",
+"Newton's Third Law",
+"Momentum",
+"Conservation of Momentum"
+],
+
+"9. Gravitation":[
+"Gravitation",
+"Universal Law of Gravitation",
+"Free Fall",
+"Acceleration Due to Gravity",
+"Mass",
+"Weight",
+"Thrust",
+"Pressure",
+"Buoyancy",
+"Archimedes Principle",
+"Relative Density"
+],
+
+"10. Work and Energy":[
+"Work",
+"Conditions for Work",
+"Energy",
+"Kinetic Energy",
+"Potential Energy",
+"Law of Conservation of Energy",
+"Power",
+"Commercial Unit of Energy"
+],
+
+"11. Sound":[
+"Production of Sound",
+"Propagation of Sound",
+"Characteristics of Sound",
+"Frequency",
+"Amplitude",
+"Time Period",
+"Speed of Sound",
+"Reflection of Sound",
+"Echo",
+"Reverberation",
+"Human Ear",
+"Applications of Ultrasound"
+],
+
+"12. Improvement in Food Resources":[
+"Crop Variety Improvement",
+"Crop Production Management",
+"Nutrient Management",
+"Irrigation",
+"Cropping Patterns",
+"Crop Protection",
+"Animal Husbandry",
+"Cattle Farming",
+"Poultry Farming",
+"Fish Production",
+"Bee-keeping",
+"Food from Agriculture"
+]
+
+},
+
+10:{
+"1. Chemical Reactions and Equations":[
+"Chemical Reactions",
+"Chemical Equations",
+"Balanced Chemical Equations",
+"Types of Chemical Reactions",
+"Combination Reaction",
+"Decomposition Reaction",
+"Displacement Reaction",
+"Double Displacement Reaction",
+"Oxidation",
+"Reduction",
+"Redox Reaction",
+"Corrosion",
+"Rancidity"
+],
+
+"2. Acids, Bases and Salts":[
+"Acids",
+"Bases",
+"Indicators",
+"Chemical Properties of Acids",
+"Chemical Properties of Bases",
+"Reaction with Metals",
+"Reaction with Carbonates",
+"Neutralisation",
+"pH Scale",
+"Importance of pH",
+"Salts",
+"Common Salt",
+"Baking Soda",
+"Washing Soda",
+"Bleaching Powder",
+"Plaster of Paris"
+],
+
+"3. Metals and Non-metals":[
+"Physical Properties of Metals",
+"Physical Properties of Non-metals",
+"Chemical Properties",
+"Reaction with Oxygen",
+"Reaction with Water",
+"Reaction with Acids",
+"Displacement Reactions",
+"Reactivity Series",
+"Ionic Compounds",
+"Extraction of Metals",
+"Refining of Metals",
+"Corrosion",
+"Alloys"
+],
+
+"4. Carbon and Its Compounds":[
+"Carbon",
+"Covalent Bond",
+"Versatile Nature of Carbon",
+"Saturated Hydrocarbons",
+"Unsaturated Hydrocarbons",
+"Homologous Series",
+"Nomenclature",
+"Functional Groups",
+"Chemical Properties",
+"Combustion",
+"Oxidation",
+"Addition Reaction",
+"Substitution Reaction",
+"Ethanoic Acid",
+"Soap",
+"Detergents"
+],
+
+"5. Life Processes":[
+"Nutrition",
+"Autotrophic Nutrition",
+"Heterotrophic Nutrition",
+"Human Digestive System",
+"Respiration",
+"Aerobic Respiration",
+"Anaerobic Respiration",
+"Human Respiratory System",
+"Transportation",
+"Human Circulatory System",
+"Excretion",
+"Human Excretory System",
+"Plant Transport"
+],
+
+"6. Control and Coordination":[
+"Nervous System",
+"Neuron",
+"Reflex Action",
+"Human Brain",
+"Coordination in Plants",
+"Plant Hormones",
+"Animal Hormones",
+"Endocrine Glands",
+"Plant Movements",
+"Phototropism",
+"Geotropism",
+"Chemical Coordination"
+],
+
+"7. How do Organisms Reproduce?":[
+"Reproduction",
+"Asexual Reproduction",
+"Fission",
+"Budding",
+"Fragmentation",
+"Regeneration",
+"Vegetative Propagation",
+"Sexual Reproduction",
+"Male Reproductive System",
+"Female Reproductive System",
+"Fertilisation",
+"Menstrual Cycle",
+"Reproductive Health"
+],
+
+"8. Heredity":[
+"Heredity",
+"Variation",
+"Mendel",
+"Experiments on Pea Plant",
+"Dominant Traits",
+"Recessive Traits",
+"Genes",
+"Chromosomes",
+"Sex Determination",
+"Inherited Traits",
+"Evolution"
+],
+
+"9. Light – Reflection and Refraction":[
+"Reflection",
+"Laws of Reflection",
+"Spherical Mirrors",
+"Concave Mirror",
+"Convex Mirror",
+"Mirror Formula",
+"Magnification",
+"Refraction",
+"Laws of Refraction",
+"Refractive Index",
+"Refraction Through Glass Slab",
+"Lenses",
+"Lens Formula",
+"Magnification",
+"Power of Lens"
+],
+
+"10. Human Eye and the Colourful World":[
+"Human Eye",
+"Parts of Eye",
+"Accommodation",
+"Defects of Vision",
+"Myopia",
+"Hypermetropia",
+"Presbyopia",
+"Correction of Eye Defects",
+"Prism",
+"Dispersion",
+"Rainbow",
+"Atmospheric Refraction",
+"Scattering of Light"
+],
+
+"11. Electricity":[
+"Electric Current",
+"Electric Potential",
+"Potential Difference",
+"Circuit",
+"Resistance",
+"Factors Affecting Resistance",
+"Resistors",
+"Combination of Resistors",
+"Ohm's Law",
+"Heating Effect",
+"Electric Power",
+"Electric Energy",
+"Commercial Unit"
+],
+
+"12. Magnetic Effects of Electric Current":[
+"Magnetic Field",
+"Magnetic Field Lines",
+"Field Due to Current-Carrying Conductor",
+"Right Hand Thumb Rule",
+"Solenoid",
+"Electromagnet",
+"Force on Current-Carrying Conductor",
+"Electric Motor",
+"Electromagnetic Induction",
+"Electric Generator",
+"Domestic Electric Circuits"
+],
+
+"13. Our Environment":[
+"Ecosystem",
+"Food Chain",
+"Food Web",
+"Trophic Levels",
+"Energy Flow",
+"Biodegradable Substances",
+"Non-biodegradable Substances",
+"Ozone Layer",
+"Environmental Problems",
+"Waste Management"
+],
+
+"14. Sustainable Management of Natural Resources":[
+"Natural Resources",
+"Forest Resources",
+"Water Resources",
+"Coal and Petroleum",
+"Wildlife Conservation",
+"Sustainable Development",
+"Water Harvesting",
+"Forest Management",
+"Stakeholders",
+"Need for Sustainable Management"
+]
+
+}
+
+};
+
+
+/* =========================================================
+   BASIC STORAGE
+   ========================================================= */
+
+const OWNER_PASSWORD="educationguru12";
+
+let settings=JSON.parse(
+ localStorage.getItem("education_settings")||"null"
+)||{
+ notesPrice:100,
+ customSyllabus:{}
+};
+
+function saveSettings(){
+ localStorage.setItem(
+  "education_settings",
+  JSON.stringify(settings)
+ );
+}
+
+function esc(text){
+ return String(text).replace(/[&<>"']/g,function(m){
+  return {
+   "&":"&amp;",
+   "<":"&lt;",
+   ">":"&gt;",
+   '"':"&quot;",
+   "'":"&#39;"
+  }[m];
+ });
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+function go(id){
+
+ document.querySelectorAll(".page")
+ .forEach(p=>p.classList.add("hidden"));
+
+ document.getElementById(id)
+ .classList.remove("hidden");
+
+ if(id==="syllabus"){
+  renderSyllabus();
+ }
+
+ if(id==="notes"){
+  updatePrice();
+  loadNoteChapters();
+ }
+
+ if(id==="home"){
+  updatePrice();
+ }
+
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
+}
+
+
+/* =========================================================
+   PROFILE
+   ========================================================= */
+
+function openProfile(){
+ document.getElementById("profileModal")
+ .classList.remove("hidden");
+}
+
+function closeProfile(){
+ document.getElementById("profileModal")
+ .classList.add("hidden");
+}
+
+function saveProfile(){
+
+ const profile={
+  name:document.getElementById("studentName").value.trim(),
+  cls:document.getElementById("studentClass").value,
+  school:document.getElementById("schoolName").value.trim(),
+  goal:document.getElementById("learningGoal").value.trim(),
+  months:Number(document.getElementById("profileMonths").value)||6
+ };
+
+ localStorage.setItem(
+  "student_profile",
+  JSON.stringify(profile)
+ );
+
+ closeProfile();
+
+ document.getElementById("classSelect").value=
+ profile.cls;
+
+ go("syllabus");
+}
+
+
+/* =========================================================
+   SYLLABUS
+   ========================================================= */
+
+function getClassData(cls){
+
+ let data={};
+
+ Object.assign(
+  data,
+  SYLLABUS[cls]||{}
+ );
+
+ if(settings.customSyllabus &&
+    settings.customSyllabus[cls]){
+
+  Object.keys(
+   settings.customSyllabus[cls]
+  ).forEach(subject=>{
+
+   Object.assign(
+    data,
+    settings.customSyllabus[cls][subject]
+   );
+
+  });
+
+ }
+
+ return data;
+}
+
+
+function renderSyllabus(){
+
+ const cls=document.getElementById("classSelect").value;
+
+ const query=
+  document.getElementById("searchBox")
+  .value
+  .toLowerCase();
+
+ const list=document.getElementById(
+  "syllabusList"
+ );
+
+ list.innerHTML="";
+
+ const data=getClassData(cls);
+
+ Object.keys(data).forEach(
+  (chapter,index)=>{
+
+   const topics=data[chapter];
+
+   const filtered=topics.filter(
+    t=>
+    (chapter+" "+t)
+    .toLowerCase()
+    .includes(query)
+   );
+
+   if(query && !filtered.length)
+    return;
+
+   const div=document.createElement("div");
+
+   div.className="card";
+   div.style.marginTop="15px";
+
+   div.innerHTML=`
+
+   <span class="badge">
+   Chapter ${index+1}
+   </span>
+
+   <h3>${esc(chapter)}</h3>
+
+   <p class="small">
+   ${topics.length} Topics
+   </p>
+
+   <button
+   class="btn"
+   onclick='openChapter(${JSON.stringify(cls)},${JSON.stringify(chapter)})'>
+   Open Chapter
+   </button>
+
+   ${
+    query
+    ?
+    filtered.map(
+     t=>`
+     <div class="topic">
+     <b>${esc(t)}</b>
+     <button
+     class="btn secondary"
+     onclick='openLesson(${JSON.stringify(cls)},${JSON.stringify(chapter)},${JSON.stringify(t)})'>
+     Study
+     </button>
+     </div>
+     `
+    ).join("")
+    :""
+   }
+
+   `;
+
+   list.appendChild(div);
+
+  }
+ );
+
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+function progressKey(c,ch,t){
+ return "done_"+c+"_"+ch+"_"+t;
+}
+
+function isDone(c,ch,t){
+ return localStorage.getItem(
+  progressKey(c,ch,t)
+ )==="1";
+}
+
+function toggleDone(c,ch,t){
+
+ const key=progressKey(c,ch,t);
+
+ localStorage.setItem(
+  key,
+  isDone(c,ch,t)?"0":"1"
+ );
+
+ renderLesson(c,ch,t);
+}
+
+
+/* =========================================================
+   CHAPTER
+   ========================================================= */
+
+function openChapter(cls,chapter){
+
+ document.querySelectorAll(".page")
+ .forEach(p=>p.classList.add("hidden"));
+
+ document.getElementById("chapter")
+ .classList.remove("hidden");
+
+ const topics=getClassData(cls)[chapter];
+
+ const completed=topics.filter(
+  t=>isDone(cls,chapter,t)
+ ).length;
+
+ const percent=Math.round(
+  completed/topics.length*100
+ );
+
+ document.getElementById(
+  "chapterContent"
+ ).innerHTML=`
+
+ <div class="hero">
+
+ <span class="badge">
+ Class ${cls}
+ </span>
+
+ <h2>${esc(chapter)}</h2>
+
+ <p>
+ Chapter Progress:
+ ${completed}/${topics.length}
+ topics complete
+ </p>
+
+ <div class="progress">
+ <i style="width:${percent}%"></i>
+ </div>
+
+ <p>${percent}% completed</p>
+
+ </div>
+
+ <div class="card" style="margin-top:18px">
+
+ <h3>📑 Chapter Topics</h3>
+
+ ${
+ topics.map(
+  (topic,i)=>`
+
+  <div class="topic">
+
+  <div class="row">
+
+  <div>
+
+  <b>
+  ${i+1}. ${esc(topic)}
+  </b>
+
+  <div class="small">
+
+  ${
+   isDone(cls,chapter,topic)
+   ?"✅ Completed"
+   :"⏳ Not completed"
+  }
+
+  </div>
+
+  </div>
+
+  <button
+  class="btn"
+  onclick='openLesson(${JSON.stringify(cls)},${JSON.stringify(chapter)},${JSON.stringify(topic)})'>
+  Study Topic
+  </button>
+
+  </div>
+
+  </div>
+
+  `
+ ).join("")
+ }
+
+ </div>
+
+ <div class="card" style="margin-top:18px">
+
+ <h3>📝 Chapter Test</h3>
+
+ <p>
+ Chapter complete करने के बाद:
+ <b>10 MCQ + 10 Match + 10 Fill + 10 Written Answer</b>
+ करें।
+ </p>
+
+ <button
+ class="btn"
+ onclick='openPractice(${JSON.stringify(cls)},${JSON.stringify(chapter)})'>
+ Start Chapter Test
+ </button>
+
+ </div>
+ `;
+
+}
+
+
+/* =========================================================
+   LESSON
+   ========================================================= */
+
+function getExplanation(topic,chapter){
+
+ const lower=
+ (topic+" "+chapter).toLowerCase();
+
+ let category="Science";
+
+ if(
+ /force|motion|sound|light|electric|magnetic|work|energy|gravitation|friction|pressure|reflection|refraction|power|current|velocity|acceleration/
+ .test(lower)
+ ){
+  category="Physics";
+ }
+
+ else if(
+ /atom|molecule|matter|acid|base|salt|metal|carbon|reaction|combustion|petroleum|coal|fibre|plastic|chemical|oxidation|ore|ph/
+ .test(lower)
+ ){
+  category="Chemistry";
+ }
+
+ else if(
+ /cell|tissue|life|reproduction|heredity|organism|microorganism|plant|animal|adolescence|crop|food|environment|conservation|pollution|ecosystem/
+ .test(lower)
+ ){
+  category="Biology";
+ }
+
+ return `
+
+ <h2>${esc(topic)}</h2>
+
+ <span class="badge">
+ ${category}
+ </span>
+
+ <h3>📖 Topic Introduction</h3>
+
+ <p>
+ <b>${esc(topic)}</b>
+ Science का एक महत्वपूर्ण concept है।
+ इस topic को समझने के लिए definition,
+ मुख्य concept, examples और application
+ को क्रम से पढ़ना चाहिए।
+ </p>
+
+ <h3>🔎 कैसे समझें?</h3>
+
+ <ol>
+
+ <li>
+ सबसे पहले topic की basic definition समझें।
+ </li>
+
+ <li>
+ मुख्य keywords को नोट करें।
+ </li>
+
+ <li>
+ Process या कारण और परिणाम समझें।
+ </li>
+
+ <li>
+ Real-life example से concept को जोड़ें।
+ </li>
+
+ <li>
+ अंत में अपने शब्दों में answer लिखें।
+ </li>
+
+ </ol>
+
+ <h3>🎯 Exam Focus</h3>
+
+ <ul>
+
+ <li>Definitions</li>
+
+ <li>Important keywords</li>
+
+ <li>Why / How questions</li>
+
+ <li>Examples</li>
+
+ <li>Diagrams जहाँ आवश्यक हों</li>
+
+ <li>Numericals जहाँ लागू हों</li>
+
+ </ul>
+
+ <div class="card">
+
+ <h3>💡 Study Tip</h3>
+
+ <p>
+ Topic पढ़ने के बाद बिना book देखे
+ इसे 3–5 lines में खुद explain करने की कोशिश करें।
+ </p>
+
+ </div>
+
+ `;
+
+}
+
+
+function openLesson(cls,chapter,topic){
+
+ renderLesson(cls,chapter,topic);
+
+}
+
+
+function renderLesson(cls,chapter,topic){
+
+ document.querySelectorAll(".page")
+ .forEach(p=>p.classList.add("hidden"));
+
+ document.getElementById("lesson")
+ .classList.remove("hidden");
+
+ const done=isDone(cls,chapter,topic);
+
+ document.getElementById(
+  "lessonContent"
+ ).innerHTML=`
+
+ <div class="lesson">
+
+ <p class="small">
+ Class ${cls} → ${esc(chapter)}
+ </p>
+
+ ${getExplanation(topic,chapter)}
+
+ <hr>
+
+ <button
+ class="btn"
+ onclick='toggleDone(${JSON.stringify(cls)},${JSON.stringify(chapter)},${JSON.stringify(topic)})'>
+
+ ${
+  done
+  ?"↩ Mark as Not Completed"
+  :"✅ Mark Topic Complete"
+ }
+
+ </button>
+
+ <button
+ class="btn secondary"
+ onclick='openChapter(${JSON.stringify(cls)},${JSON.stringify(chapter)})'>
+
+ Back to Chapter
+
+ </button>
+
+ </div>
+
+ `;
+
+}
+
+
+/* =========================================================
+   CHAPTER PRACTICE
+   ========================================================= */
+
+function openPractice(cls,chapter){
+
+ const topics=getClassData(cls)[chapter];
+
+ document.querySelectorAll(".page")
+ .forEach(p=>p.classList.add("hidden"));
+
+ document.getElementById("lesson")
+ .classList.remove("hidden");
+
+ let html=`
+
+ <div class="lesson">
+
+ <h2>
+ 📝 ${esc(chapter)} — Chapter Practice
+ </h2>
+
+ <p>
+ 10 MCQ • 10 Match • 10 Fill in the Blanks
+ • 10 Written Answers
+ </p>
+ `;
+
+
+ /* MCQ */
+
+ for(let i=0;i<10;i++){
+
+  const topic=topics[i%topics.length];
+
+  html+=`
+
+  <div class="quizbox">
+
+  <b>MCQ ${i+1}</b>
+
+  <p>
+  ${esc(topic)} के बारे में सही option चुनें:
+  </p>
+
+  <label>
+  <input
+  type="radio"
+  name="mcq${i}"
+  value="correct">
+
+  यह इसी topic का मुख्य concept है।
+  </label>
+
+  <label>
+  <input
+  type="radio"
+  name="mcq${i}"
+  value="wrong">
+
+  इसका topic से कोई संबंध नहीं है।
+  </label>
+
+  <button
+  class="btn secondary"
+  onclick="checkMCQ(this,${i})">
+
+  Check Answer
+
+  </button>
+
+  <div></div>
+
+  </div>
+
+  `;
+
+ }
+
+
+ /* MATCH */
+
+ for(let i=0;i<10;i++){
+
+  const topic=topics[i%topics.length];
+
+  html+=`
+
+  <div class="quizbox">
+
+  <b>Match the Following ${i+1}</b>
+
+  <p>
+  Column A:
+  <b>${esc(topic)}</b>
+  </p>
+
+  <input
+  placeholder="Column B का answer लिखें">
+
+  <button
+  class="btn secondary"
+  onclick="checkTextAnswer(this)">
+
+  Check Answer
+
+  </button>
+
+  <div></div>
+
+  </div>
+
+  `;
+
+ }
+
+
+ /* FILL */
+
+ for(let i=0;i<10;i++){
+
+  const topic=topics[i%topics.length];
+
+  html+=`
+
+  <div class="quizbox">
+
+  <b>Fill in the Blank ${i+1}</b>
+
+  <p>
+  ${esc(topic)} से संबंधित
+  मुख्य keyword लिखें।
+  </p>
+
+  <input
+  placeholder="Your answer">
+
+  <button
+  class="btn secondary"
+  onclick="checkTextAnswer(this)">
+
+  Check Answer
+
+  </button>
+
+  <div></div>
+
+  </div>
+
+  `;
+
+ }
+
+
+ /* WRITTEN */
+
+ for(let i=0;i<10;i++){
+
+  const topic=topics[i%topics.length];
+
+  html+=`
+
+  <div class="quizbox">
+
+  <b>Answer Question ${i+1}</b>
+
+  <p>
+  <b>${esc(topic)}</b>
+  को अपने शब्दों में समझाइए।
+  </p>
+
+  <textarea
+  rows="5"
+  placeholder="अपना answer यहाँ लिखें...">
+  </textarea>
+
+  <button
+  class="btn"
+  onclick="checkWritten(this)">
+
+  Submit Answer
+
+  </button>
+
+  <div></div>
+
+  </div>
+
+  `;
+
+ }
+
+
+ html+=`
+
+ <button
+ class="btn secondary"
+ onclick='openChapter(${JSON.stringify(cls)},${JSON.stringify(chapter)})'>
+
+ Back to Chapter
+
+ </button>
+
+ </div>
+ `;
+
+
+ document.getElementById(
+  "lessonContent"
+ ).innerHTML=html;
+
+}
+
+
+function checkMCQ(button,index){
+
+ const box=button.parentElement;
+
+ const selected=
+ box.querySelector(
+  'input[name="mcq'+index+'"]:checked'
+ );
+
+ const output=box.querySelector("div");
+
+ if(!selected){
+
+  output.className="feedback wrong";
+
+  output.innerHTML=
+  "❌ पहले option चुनें।";
+
+  return;
+
+ }
+
+ if(selected.value==="correct"){
+
+  output.className="feedback correct";
+
+  output.innerHTML=
+  "✅ सही उत्तर!";
+
+ }else{
+
+  output.className="feedback wrong";
+
+  output.innerHTML=
+  "❌ गलत उत्तर।<br><b>सही उत्तर:</b> पहला option — यह topic उसी concept से संबंधित है।";
+
+ }
+
+}
+
+
+function checkTextAnswer(button){
+
+ const box=button.parentElement;
+
+ const input=box.querySelector("input");
+
+ const output=box.querySelector("div");
+
+ if(!input.value.trim()){
+
+  output.className="feedback wrong";
+
+  output.innerHTML=
+  "❌ पहले answer लिखें।";
+
+  return;
+
+ }
+
+ const words=
+ input.value.trim().split(/\s+/).length;
+
+ if(words>=3){
+
+  output.className="feedback correct";
+
+  output.innerHTML=
+  "✅ Answer submitted. Keywords और definition शामिल करने की कोशिश करें।";
+
+ }else{
+
+  output.className="feedback wrong";
+
+  output.innerHTML=
+  "❌ Answer बहुत छोटा है। सही answer में definition और important keywords जोड़ें।";
+
+ }
+
+}
+
+
+function checkWritten(button){
+
+ const box=button.parentElement;
+
+ const textarea=box.querySelector("textarea");
+
+ const output=box.querySelector("div");
+
+ const answer=textarea.value.trim();
+
+ if(!answer){
+
+  output.className="feedback wrong";
+
+  output.innerHTML=
+  "❌ Answer खाली है। पहले अपना answer लिखें।";
+
+  return;
+
+ }
+
+ const words=
+ answer.split(/\s+/).length;
+
+ if(words>=8){
+
+  output.className="feedback correct";
+
+  output.innerHTML=`
+  ✅ आपका answer practice के लिए अच्छा है।
+  <br>
+  <b>Improve:</b>
+  Definition + मुख्य points + example जोड़ें।
+  `;
+
+ }else{
+
+  output.className="feedback wrong";
+
+  output.innerHTML=`
+  ❌ Answer अधूरा है।
+  <br>
+  <b>सही तरीका:</b>
+  Definition, key points, process और example
+  शामिल करें।
+  `;
+
+ }
+
+}
+
+
+/* =========================================================
+   STUDY PLANNER
+   ========================================================= */
+
+function makePlan(){
+
+ const cls=
+ document.getElementById("planClass").value;
+
+ const months=
+ Number(document.getElementById("months").value)||6;
+
+ const hours=
+ Number(document.getElementById("studyHours").value)||2;
+
+ const topics=
+ Object.values(
+  getClassData(cls)
+ ).flat();
+
+ const days=months*30;
+
+ const daily=
+ Math.max(
+  1,
+  Math.ceil(topics.length/days)
+ );
+
+ document.getElementById(
+  "planOutput"
+ ).innerHTML=`
+
+ <h3>
+ 🎯 Class ${cls} Daily Goal
+ </h3>
+
+ <p>
+ Total Topics:
+ <b>${topics.length}</b>
+ </p>
+
+ <p>
+ Target:
+ <b>${months} months</b>
+ </p>
+
+ <p>
+ Average:
+ <b>${daily} topic/day</b>
+ </p>
+
+ <h3>⏰ Daily Timetable</h3>
+
+ <ul>
+
+ <li>
+ ${hours} घंटे — New Concept
+ </li>
+
+ <li>
+ 30 मिनट — Revision
+ </li>
+
+ <li>
+ 30 मिनट — Questions
+ </li>
+
+ <li>
+ 15 मिनट — Mistake Review
+ </li>
+
+ </ul>
+
+ <h3>📅 Weekly Plan</h3>
+
+ <p>
+ Monday–Saturday: New Topics
+ </p>
+
+ <p>
+ Sunday: Revision + Chapter Test
+ </p>
+
+ `;
+
+}
+
+
+/* =========================================================
+   NOTES
+   ========================================================= */
+
+function updatePrice(){
+
+ document.getElementById(
+  "notesPrice"
+ ).innerText=
+ "₹"+settings.notesPrice;
+
+ document.getElementById(
+  "homePrice"
+ ).innerText=
+ "₹"+settings.notesPrice;
+
+}
+
+
+function loadNoteChapters(){
+
+ const cls=
+ document.getElementById("notesClass").value;
+
+ const chapters=
+ getClassData(cls);
+
+ const select=
+ document.getElementById("notesChapter");
+
+ select.innerHTML=
+ Object.keys(chapters)
+ .map(
+  x=>`<option value="${esc(x)}">${esc(x)}</option>`
+ )
+ .join("");
+
+ loadNoteTopics();
+
+}
+
+
+function loadNoteTopics(){
+
+ const cls=
+ document.getElementById("notesClass").value;
+
+ const chapter=
+ document.getElementById("notesChapter").value;
+
+ const topics=
+ getClassData(cls)[chapter]||[];
+
+ document.getElementById(
+  "notesTopic"
+ ).innerHTML=
+ topics.map(
+  x=>`<option value="${esc(x)}">${esc(x)}</option>`
+ ).join("");
+
+}
+
+
+function submitNotes(){
+
+ const cls=
+ document.getElementById("notesClass").value;
+
+ const chapter=
+ document.getElementById("notesChapter").value;
+
+ const topic=
+ document.getElementById("notesTopic").value;
+
+ const student=
+ document.getElementById("notesStudent").value.trim();
+
+ const ref=
+ document.getElementById("paymentRef").value.trim();
+
+ const message=
+ document.getElementById("notesMessage");
+
+ if(!student){
+
+  message.innerHTML=
+  `<div class="feedback wrong">
+  ❌ Student name डालें।
+  </div>`;
+
+  return;
+
+ }
+
+ if(!ref){
+
+  message.innerHTML=
+  `<div class="feedback wrong">
+  ❌ Payment Reference / UTR डालें।
+  </div>`;
+
+  return;
+
+ }
+
+ const requests=
+ JSON.parse(
+  localStorage.getItem("notes_requests")||"[]"
+ );
+
+ requests.push({
+
+  id:Date.now(),
+
+  student:student,
+
+  cls:cls,
+
+  chapter:chapter,
+
+  topic:topic,
+
+  paymentRef:ref,
+
+  price:settings.notesPrice,
+
+  status:"Pending",
+
+  date:new Date().toLocaleString()
+
+ });
+
+ localStorage.setItem(
+  "notes_requests",
+  JSON.stringify(requests)
+ );
+
+ message.innerHTML=
+ `<div class="feedback correct">
+ ✅ Notes request successfully saved.<br>
+ Owner payment verify करके request approve कर सकता है।
+ </div>`;
+
+}
+
+
+/* =========================================================
+   NOTES IMAGE
+   ========================================================= */
+
+function createNotesImage(){
+
+ const cls=
+ document.getElementById("notesClass").value;
+
+ const chapter=
+ document.getElementById("notesChapter").value;
+
+ const topic=
+ document.getElementById("notesTopic").value;
+
+ const canvas=
+ document.getElementById("notesCanvas");
+
+ const ctx=
+ canvas.getContext("2d");
+
+ ctx.fillStyle="#f5f7fb";
+
+ ctx.fillRect(
+  0,0,
+  canvas.width,
+  canvas.height
+ );
+
+ ctx.fillStyle="#315efb";
+
+ ctx.fillRect(
+  0,0,
+  1200,
+  220
+ );
+
+ ctx.fillStyle="#ffffff";
+
+ ctx.font=
+ "bold 58px Arial";
+
+ ctx.fillText(
+  "Education Site",
+  60,
+  90
+ );
+
+ ctx.font=
+ "bold 30px Arial";
+
+ ctx.fillText(
+  "Education Guru Site",
+  60,
+  145
+ );
+
+ ctx.fillStyle="#182033";
+
+ ctx.font=
+ "bold 42px Arial";
+
+ ctx.fillText(
+  "Class "+cls+" • Science",
+  60,
+  320
+ );
+
+ ctx.font=
+ "bold 36px Arial";
+
+ ctx.fillText(
+  chapter.substring(0,45),
+  60,
+  400
+ );
+
+ ctx.font=
+ "bold 32px Arial";
+
+ ctx.fillText(
+  topic.substring(0,50),
+  60,
+  470
+ );
+
+ ctx.font=
+ "28px Arial";
+
+ const lines=[
+
+  "TOPIC NOTES",
+
+  "• Definition / Main Idea",
+
+  "• Important Concepts",
+
+  "• Key Points",
+
+  "• Examples",
+
+  "• Exam Focus",
+
+  "• Important Questions",
+
+  "• Revision Points"
+
+ ];
+
+ lines.forEach(
+  (line,i)=>{
+
+   ctx.fillText(
+    line,
+    70,
+    600+i*80
+   );
+
+  }
+ );
+
+ ctx.font=
+ "22px Arial";
+
+ ctx.fillText(
+  "Education Site • Education Guru Site",
+  70,
+  1250
+ );
+
+ canvas.classList.remove("hidden");
+
+ document.getElementById(
+  "downloadImage"
+ ).classList.remove("hidden");
+
+}
+
+
+function downloadNotesImage(){
+
+ const canvas=
+ document.getElementById("notesCanvas");
+
+ const link=
+ document.createElement("a");
+
+ link.download=
+ "education-site-notes.png";
+
+ link.href=
+ canvas.toDataURL("image/png");
+
+ link.click();
+
+}
+
+
+/* =========================================================
+   AI / BASIC ANSWER CHECKER
+   ========================================================= */
+
+function checkAIAnswer(){
+
+ const question=
+ document.getElementById("aiQuestion")
+ .value.trim();
+
+ const answer=
+ document.getElementById("aiAnswer")
+ .value.trim();
+
+ const topic=
+ document.getElementById("aiTopic")
+ .value.trim();
+
+ const result=
+ document.getElementById("aiResult");
+
+ if(!question||!answer){
+
+  result.innerHTML=
+  `<div class="feedback wrong">
+  ❌ Question और Answer दोनों लिखें।
+  </div>`;
+
+  return;
+
+ }
+
+ const words=
+ answer.split(/\s+/).length;
+
+ if(words<8){
+
+  result.innerHTML=
+  `<div class="feedback wrong">
+
+  ❌ आपका answer बहुत छोटा है।
+
+  <br><br>
+
+  <b>सही तरीका:</b>
+
+  पहले definition लिखें,
+  फिर मुख्य points,
+  फिर example या explanation दें।
+
+  </div>`;
+
+ }else{
+
+  result.innerHTML=
+  `<div class="feedback correct">
+
+  ✅ आपका answer practice के लिए पर्याप्त है।
+
+  <br><br>
+
+  <b>Improvement:</b>
+
+  ${topic?
+  esc(topic)+" के important keywords जोड़ें।":
+  "Question के important keywords और examples जोड़ें।"}
+
+  <br>
+
+  NCERT textbook से final answer verify करें।
+
+  </div>`;
+
+ }
+
+}
+
+
+/* =========================================================
+   OWNER PANEL
+   ========================================================= */
+
+function openOwner(){
+
+ document.getElementById(
+  "ownerModal"
+ ).classList.remove("hidden");
+
+}
+
+
+function closeOwner(){
+
+ document.getElementById(
+  "ownerModal"
+ ).classList.add("hidden");
+
+}
+
+
+function ownerLogin(){
+
+ const password=
+ document.getElementById(
+  "ownerPassword"
+ ).value;
+
+ if(password===OWNER_PASSWORD){
+
+  closeOwner();
+
+  renderOwner();
+
+ }else{
+
+  alert("Wrong Owner Password");
+
+ }
+
+}
+
+
+function renderOwner(){
+
+ go("owner");
+
+ const requests=
+ JSON.parse(
+  localStorage.getItem(
+   "notes_requests"
+  )||"[]"
+ );
+
+ document.getElementById(
+  "ownerContent"
+ ).innerHTML=`
+
+ <h2>🔐 Owner Panel</h2>
+
+ <div class="grid">
+
+ <div class="card">
+
+ <h3>💰 Notes Pricing</h3>
+
+ <p>
+ Current:
+ <b>₹${settings.notesPrice}</b>
+ </p>
+
+ <input
+ id="newPrice"
+ type="number"
+ min="0"
+ value="${settings.notesPrice}">
+
+ <br><br>
+
+ <button
+ class="btn"
+ onclick="changePrice()">
+
+ Change Price
+
+ </button>
+
+ </div>
+
+
+ <div class="card">
+
+ <h3>➕ Add New Syllabus</h3>
+
+ <p>
+ नया Class, Subject, Chapter और Topics
+ add कर सकते हैं।
+ </p>
+
+ <button
+ class="btn"
+ onclick="addNewSyllabus()">
+
+ Add Syllabus
+
+ </button>
+
+ </div>
+
+
+ <div class="card">
+
+ <h3>📝 Notes Requests</h3>
+
+ <p>
+ Total Requests:
+ <b>${requests.length}</b>
+ </p>
+
+ <button
+ class="btn secondary"
+ onclick="manageRequests()">
+
+ Manage Requests
+
+ </button>
+
+ </div>
+
+
+ <div class="card">
+
+ <h3>🧹 Data Management</h3>
+
+ <button
+ class="btn red"
+ onclick="deleteRequests()">
+
+ Delete Requests
+
+ </button>
+
+ </div>
+
+ </div>
+
+ <div
+ id="ownerArea"
+ style="margin-top:20px">
+ </div>
+
+ `;
+
+}
+
+
+/* CHANGE PRICE */
+
+function changePrice(){
+
+ const price=
+ Number(
+  document.getElementById(
+   "newPrice"
+  ).value
+ );
+
+ if(price<0)return;
+
+ settings.notesPrice=price;
+
+ saveSettings();
+
+ updatePrice();
+
+ alert(
+  "Notes price successfully changed to ₹"+price
+ );
+
+ renderOwner();
+
+}
+
+
+/* ADD SYLLABUS */
+
+function addNewSyllabus(){
+
+ const cls=
+ prompt(
+  "New Class लिखें। Example: 11"
+ );
+
+ if(!cls)return;
+
+ const subject=
+ prompt(
+  "Subject लिखें। Example: Physics"
+ );
+
+ if(!subject)return;
+
+ const chapter=
+ prompt(
+  "Chapter Name लिखें"
+ );
+
+ if(!chapter)return;
+
+ const topicText=
+ prompt(
+  "Topics comma से अलग करके लिखें"
+ );
+
+ if(!topicText)return;
+
+ settings.customSyllabus=
+ settings.customSyllabus||{};
+
+ settings.customSyllabus[cls]=
+ settings.customSyllabus[cls]||{};
+
+ settings.customSyllabus[cls][subject]=
+ settings.customSyllabus[cls][subject]||{};
+
+ settings.customSyllabus[cls][subject][chapter]=
+ topicText
+ .split(",")
+ .map(x=>x.trim())
+ .filter(Boolean);
+
+ saveSettings();
+
+ alert(
+  "New syllabus saved successfully!"
+ );
+
+}
+
+
+/* MANAGE REQUESTS */
+
+function manageRequests(){
+
+ const requests=
+ JSON.parse(
+  localStorage.getItem(
+   "notes_requests"
+  )||"[]"
+ );
+
+ const area=
+ document.getElementById(
+  "ownerArea"
+ );
+
+ if(!requests.length){
+
+  area.innerHTML=
+  `<div class="card">
+  <h3>No Requests</h3>
+  <p>अभी कोई notes request नहीं है।</p>
+  </div>`;
+
+  return;
+
+ }
+
+ area.innerHTML=`
+
+ <div class="card">
+
+ <h3>📋 Notes Requests</h3>
+
+ <div class="tablewrap">
+
+ <table>
+
+ <tr>
+
+ <th>Student</th>
+ <th>Class</th>
+ <th>Chapter</th>
+ <th>Topic</th>
+ <th>Payment Ref</th>
+ <th>Price</th>
+ <th>Status</th>
+ <th>Action</th>
+
+ </tr>
+
+ ${
+ requests.map(
+  (r,i)=>`
+
+ <tr>
+
+ <td>${esc(r.student)}</td>
+
+ <td>${esc(r.cls)}</td>
+
+ <td>${esc(r.chapter)}</td>
+
+ <td>${esc(r.topic)}</td>
+
+ <td>${esc(r.paymentRef)}</td>
+
+ <td>₹${r.price}</td>
+
+ <td>${esc(r.status)}</td>
+
+ <td>
+
+ <button
+ class="btn green"
+ onclick="approveRequest(${i})">
+
+ Approve
+
+ </button>
+
+ </td>
+
+ </tr>
+
+ `
+ ).join("")
+ }
+
+ </table>
+
+ </div>
+
+ </div>
+
+ `;
+
+}
+
+
+/* APPROVE */
+
+function approveRequest(index){
+
+ const requests=
+ JSON.parse(
+  localStorage.getItem(
+   "notes_requests"
+  )||"[]"
+ );
+
+ if(!requests[index])return;
+
+ requests[index].status=
+ "Approved";
+
+ localStorage.setItem(
+  "notes_requests",
+  JSON.stringify(requests)
+ );
+
+ manageRequests();
+
+}
+
+
+/* DELETE */
+
+function deleteRequests(){
+
+ if(
+ confirm(
+  "क्या आप सभी notes requests delete करना चाहते हैं?"
+ )
+ ){
+
+  localStorage.removeItem(
+   "notes_requests"
+  );
+
+  renderOwner();
+
+ }
+
+}
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+updatePrice();
+
+go("home");
+
+</script>
+
+</body>
+</html>
